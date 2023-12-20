@@ -49,3 +49,37 @@ Completely isolate a container from the host and other containers. none is not a
 
 
 https://docs.docker.com/network/drivers/           -> More refer in offical document of docker document
+
+
+EXAMPLE :- 
+
+After installing docker in instance 
+
+you can cmd $ ip address show
+
+
+you can see :- 
+1. LookBackUp ----ip -----127.0.0.1/8  ------- this one local ip can use for local host 
+
+2. etho: ---ip----172.31.90.15/20............ Will be Lan or Vlan while you have connected to wifi network attached or LAN
+
+3. docker0 : ip------172.17.0.1/16......network used for docker 
+
+When am creating a container it connect the dokcer0 network ip and connect outside of network
+
+Docker conatiner ---------------> Docker0 network----------------> Outside world connect
+
+$ docker network ls
+
+show result
+
+METWORKID     Name        DRIVER     SCOPE
+bdg233k      bridge       bridge    local
+gddh444      host         host      local
+dggd555      none         null      local 
+
+By installing docker you will get by deafult above networks
+
+So remaning network you need to create 
+
+
