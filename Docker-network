@@ -111,6 +111,51 @@ I have to expose the port $ docker run -d 80:80 nginx           80 --> system-po
 
 Now refersh the page you can see Nginx webpage will show 
 
+------Until we have saw docker bride concept its default creating-------
+
+Next :- HOST 
+
+If we want to use HOST network we want create container with Host network
+
+CMD :- $ docker create network --name nginx --network host nginx
+Conatiner created 
+
+I refreshed the port 80 for nginx webpage I killed the previous created container of Nginx with default bridge still it hosting
+
+If we are using HOST network we don't reuqired to expose or bind or map it automatically use localhost machine through expose to port 80
+
+$ docker inspect host 
+
+There is no IP address because it using host network 
+
+-------Up to we saw Host network-----
+
+NEXT :- CUSTOM BRIDGE 
+
+We use this custom bridge to Isolate
+
+Why beacuse host network will be risk to be identfied 
+
+We required to use custome bridge it create a environment know only inside containert can connect and know the ip details now host will be safe now
+
+# How you will create a custom brisge 
+
+#CMD :- docker network create din-net        # For custom we can provide 
+   Now you can see $ docker network ls
+       Additional network was created called has custom bridge 
+
+Am using a source code example of mircoservice-k8.git
+
+I have dockerfile and python.py written
+Now build a image din-app
+$ docker build -t din-app .
+image was build n
+
+Now I required to run the container with custo$docker run -d -p 5000:5000 --name din-app --network din-net din-app:latest      Here --network din-net is custome network am creating for container
+                                                                                                                        
+
+
+
 
 
 
