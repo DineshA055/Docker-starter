@@ -151,7 +151,50 @@ Now build a image din-app
 $ docker build -t din-app .
 image was build n
 
-Now I required to run the container with custo$docker run -d -p 5000:5000 --name din-app --network din-net din-app:latest      Here --network din-net is custome network am creating for container
+Now I required to run the container with custom network 
+$docker run -d -p 5000:5000 --name din-app --network din-net din-app:latest      Here --network din-net is custom network am creating for a container
+
+$docker ps --> container is created 
+
+$ ip address show         -> it will show the virtual ethernet shows fo docker virtual ethernet 
+ Now am going inside container
+
+$docker exe -it container_id
+
+$bash ping www.google.com  --> now ping is working (Connected from custom bridge via docker eth0to outside for internet connection )
+
+Am pinigng other container also $ ping nginx-cus-1    & ping nginx-cus-2 ping is working 
+
+Now am pinging with Default created conatiner   :- ping nginx app:note   ping is not reachable  
+
+Because network isolation cus 1 & 2 are created with din-net (custome network both container will only connect ) It will connect with default brdige network
+
+Because Custom network doesn't know the bridge network. [Beacuse all the custom conatiners are in same subnet 172.18.0.x)
+
+---------------Up to this we have seen custom1 network important is custom network app container will not connect with default brdige network----------------
+------only custom network connect with other custom network application container----------------------------------------------------------------------
+
+
+NEXT :- NONE network
+
+None is nothing but use for completely isolated it will not connect outside and it will connect with other internal network also
+
+$docker run -d --name nginx-din --network none   nginx
+
+Container is created but not connect outside and isolated can use for dummy container.
+
+----- up to we saw none network ---------
+
+Next :- Overlay network
+
+when we have multiple host with one host run with one container and another run two container 
+
+For this we can use overlay (connect multiple docker Host )
+
+Next :- MacVlan
+when docker container will be assigned with Mac address it will be become like seprate device and like seprate server
+
+
                                                                                                                         
 
 
