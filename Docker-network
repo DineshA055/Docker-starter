@@ -82,4 +82,35 @@ By installing docker you will get by deafult above networks
 
 So remaning network you need to create 
 
+Example we can see
+
+I want to create a nginx container 
+
+CMD :- docker run -d --name nginx nginx        #here --name nginx   name of container and nginx (i required ngnix container so am calling nginx )
+                                                     Nginx uses for reverse proxy where you use to host your website and static page you can host 
+nginx image getting image or getting pull from some dockerhub repository 
+
+Now I have created a Nginx container (ex:- nginx container does have internet connection)
+
+To check am going inside container
+
+CMD :- docker ps                 (find out container ID to login to conatiner)
+
+CMD :-docker exec -it conatiner_ID bash
+Bash will be open connected login In inside container :- Now I will ping www.google.com
+But no response because we required network layer to connect outside (who will provide docker will provide ---We have to setup network or expose port)
+
+CMD :- I want to check network inspect to check IP
+
+$ docker inspect bridge    (bridge have IP for conatiner by using connect outside ) But this by default of bridge network
+
+Now I have allowed 80 port in security group (I searched in webpage with IP:80 for nginx (But not reachable)
+Beacuse Bridge just show the route to port that's it (Untill you publish the port can only able to connect)
+
+I have to expose the port $ docker run -d 80:80 nginx           80 --> system-port and :80 is container port map and expose container port 
+
+Now refersh the page you can see Nginx webpage will show 
+
+
+
 
