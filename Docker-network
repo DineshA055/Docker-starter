@@ -1,6 +1,6 @@
 DOCKER NETWORK 
 
-Docker offers a nature networking model. There are three common Docker network types – 
+Docker offers a nature networking model. There are three common Docker network types : – 
 
 bridge networks, used within a single host, 
 
